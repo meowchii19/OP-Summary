@@ -18,7 +18,7 @@ export default function Chapters () {
 
   const handleChapter = (number) => {
     fetchChapter(number).then(data => { 
-      setNumber(number )
+      setNumber(number)
       setChapter(data) 
       setLoading(false)
       setChapters([data])
@@ -27,19 +27,20 @@ export default function Chapters () {
 
 
   const handleNext =() => {
-    setNumber(number + 1)
+    
     fetchChapter(number + 1).then(data => {
     setChapter(data)
     setChapters([data, ...chapters])
     setLoading(false)
-     console.log(chapter) 
+    setNumber(number + 1) 
     })
   }  
 
   const handlePrevious = () => {
-    setNumber(number - 1)
+    
     fetchChapter(number - 1).then(data => {
     setChapter(data)
+    setNumber(number - 1)
     setChapters([data, ...chapters])
     })
   }
@@ -55,9 +56,20 @@ export default function Chapters () {
   console.log('chapters',chapters.length)
   return !loading ? (
       <div>
-        <Button onClick={() => (handlePrevious())} variant='contained' color='primary'>Previous</Button>
-        <Button onClick={() => (handleNext())} variant='contained' color='secondary'>Next</Button>
-        <img className='cover' src={handleImage(chapter.cover_images)} alt={chapter.id} />
+        <Button onClick={() => (handlePrevious())}
+                variant='contained' 
+                color='secondary'>
+                Previous
+        </Button>
+        <Button onClick={() => (handleNext())}
+                variant='contained' 
+                color='primary'>
+                Next
+        </Button>
+        <img className='cover' 
+              src={handleImage(chapter.cover_images)} 
+              alt={chapter.id} 
+              />
         <p>{chapter.summary}</p>
       </div>
   ) : false

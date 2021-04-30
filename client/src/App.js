@@ -3,7 +3,7 @@ import Nav from './components/Nav'
 import Home from './components/Home'
 import Chapters from './components/Chapters'
 import Covers from './components/Chcovers'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import {BrowserRouter as Router,  Route} from 'react-router-dom'
 
 function App() {
   return (
